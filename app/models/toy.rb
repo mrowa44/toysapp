@@ -1,4 +1,6 @@
 class Toy < ActiveRecord::Base
+  default_scope { where active: true }
+
   belongs_to :room
   has_many :comments, as: :commentable
 
@@ -10,5 +12,9 @@ class Toy < ActiveRecord::Base
   before_create do
     self.color = 'not defined' if self.color.nil?
     self.room.number_of_toys += self.available_num
+  end
+
+  def destroy
+    update(active: false)
   end
 end
