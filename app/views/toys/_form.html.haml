@@ -1,0 +1,11 @@
+= form_for(@toy) do |f|
+  - if @toy.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@toy.errors.count, "error")
+        prohibited this toy from being saved:
+      %ul
+        - @toy.errors.full_messages.each do |message|
+          %li= message
+  .actions
+    = f.submit
