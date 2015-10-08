@@ -15,6 +15,10 @@ class Toy < ActiveRecord::Base
     update(active: false)
   end
 
+  def cached_toy_room_name
+    Rails.cache.fetch([self, 'room_name']) { self.room.name }
+  end
+
   private
 
     def set_color

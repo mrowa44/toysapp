@@ -1,4 +1,18 @@
 %p#notice= notice
+%h2= @toy.name
+%p
+  room:
+  = @toy.cached_toy_room_name
+%p
+  color:
+  = @toy.color
+%p
+  price:
+  = @toy.price
+%p
+  available number:
+  = @toy.available_num
+
 = link_to 'Edit', edit_toy_path(@toy)
 |
 = link_to 'Back', toys_path
