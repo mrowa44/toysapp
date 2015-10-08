@@ -9,12 +9,17 @@ class Toy < ActiveRecord::Base
   validates :name, presence: true, length: { maximum: 200 }, uniqueness: true
   validates :available_num, numericality: { greater_than: 0, less_than: 1000000 }
 
-  before_create do
-    self.color = 'not defined' if self.color.nil?
-    self.room.number_of_toys += self.available_num
-  end
+  before_create :set_color
 
   def destroy
     update(active: false)
   end
+
+  private
+
+    def set_color
+      self.color = 'not defined' if self.color.nil?
+      self.room.number_of_toys += self.available_num
+    end
+
 end
