@@ -41,6 +41,7 @@ class ToysController < ApplicationController
   # PATCH/PUT /toys/1.json
   def update
     respond_to do |format|
+      @toy.room_id = params[:toy][:room_id]
       if @toy.update(toy_params)
         format.html { redirect_to @toy, notice: 'Toy was successfully updated.' }
         format.json { render :show, status: :ok, location: @toy }
@@ -69,6 +70,6 @@ class ToysController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def toy_params
-      params[:toy]
+      params.require(:toy).permit(:name, :color, :price, :available_num, :room)
     end
 end

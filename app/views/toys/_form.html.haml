@@ -8,4 +8,5 @@
         - @toy.errors.full_messages.each do |message|
           %li= message
   .actions
+    = collection_select :toy, :room_id, Room.all, :id, :name
     = f.submit
