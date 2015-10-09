@@ -8,5 +8,18 @@
         - @toy.errors.full_messages.each do |message|
           %li= message
   .actions
-    = collection_select :toy, :room_id, Room.all, :id, :name
+    = f.label :name
+    = f.text_field :name
+    %br
+    = f.label :color
+    = f.text_field :color
+    %br
+    = f.label :price
+    = f.text_field :price
+    %br
+    = f.label :available_num
+    = f.text_field :available_num
+    %br
+    = f.collection_select :room_id, Room.all, :id, :name
+    %br
     = f.submit
