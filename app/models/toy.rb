@@ -11,6 +11,8 @@ class Toy < ActiveRecord::Base
 
   before_create :set_color, :set_available_toys_num
 
+  mount_uploader :image, ImageUploader
+
   def destroy
     update(active: false)
   end

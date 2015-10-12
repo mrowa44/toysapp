@@ -13,6 +13,8 @@
   available number:
   = @toy.available_num
 
+.toy-image= image_tag @toy.image.url, height: '200', alt: @toy.name
+
 = link_to 'Edit', edit_toy_path(@toy)
 |
 = link_to 'Back', toys_path

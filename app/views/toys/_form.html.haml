@@ -22,4 +22,6 @@
     %br
     = f.collection_select :room_id, Room.all, :id, :name
     %br
+    = f.file_field :image
+    %br
     = f.submit
