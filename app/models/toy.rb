@@ -28,10 +28,7 @@ class Toy < ActiveRecord::Base
     end
 
     def set_available_toys_num
-      if self.room.number_of_toys.nil?
-        self.room.number_of_toys = self.available_num
-      else
-        self.room.number_of_toys += self.available_num
-      end
+      self.room.number_of_toys += self.available_num
+      self.room.save
     end
 end
