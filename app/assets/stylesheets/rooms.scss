@@ -1,3 +1,12 @@
 // Place all the styles related to the rooms controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#room_form {
+  border: 2px solid $light_blue;
+  input[type=text] {
+    border: 2px solid $light_orange;
+  }
+}
+#room_submit {
+  border: 2px solid $light_red;
+}
