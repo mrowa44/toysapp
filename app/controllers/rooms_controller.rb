@@ -15,6 +15,7 @@ class RoomsController < ApplicationController
   # GET /rooms/new
   def new
     @room = Room.new
+    2.times { @room.toys.build }
   end
 
   # GET /rooms/1/edit
@@ -25,7 +26,6 @@ class RoomsController < ApplicationController
   # POST /rooms.json
   def create
     @room = Room.new(room_params)
-
     respond_to do |format|
       if @room.save
         format.html { redirect_to @room, notice: 'Room was successfully created.' }
@@ -69,6 +69,7 @@ class RoomsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def room_params
-      params[:room].permit(:name, :number)
+      params[:room].permit(:name, :number, toys_attributes: [:id, :name, :color,
+                                                            :price, :available_num, :image, :room_id])
     end
 end

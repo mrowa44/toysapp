@@ -13,5 +13,23 @@
     %br
     = f.label :number
     = f.collection_select :number, (1..200).to_a, :to_s, :to_s
-    %br
+    %ul
+      = f.fields_for :toys do |toys_form|
+        %br
+        %strong= toys_form.label :toy
+        %li
+          = toys_form.label :name
+          = toys_form.text_field :name
+          %br
+          = toys_form.label :color
+          = toys_form.text_field :color
+          %br
+          = toys_form.label :price
+          = toys_form.text_field :price
+          %br
+          = toys_form.label :available_num
+          = toys_form.text_field :available_num
+          %br
+          = toys_form.file_field :image
+
     = f.submit
