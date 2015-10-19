@@ -31,4 +31,11 @@ $(document).ready(function() {
     };
     redBorder();
   })();
+
+  $('#room_form li').mouseenter(function() {
+    $(this).css("font-size", "200%");
+  });
+  $('#room_form li').mouseleave(function() {
+    $(this).css("font-size", "100%");
+  });
 });

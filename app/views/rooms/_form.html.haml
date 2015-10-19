@@ -16,9 +16,9 @@
       = f.collection_select :number, (1..200).to_a, :to_s, :to_s
       %ul
         = f.fields_for :toys do |toys_form|
-          %br
-          %strong= toys_form.label :toy
           %li
+            %strong= toys_form.label :toy
+            %br
             = toys_form.label :name
             = toys_form.text_field :name
             %br
