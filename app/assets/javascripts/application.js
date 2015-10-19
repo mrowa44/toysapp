@@ -14,3 +14,21 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$(document).ready(function() {
+  (function nameBorder() {
+    var $nameField = $('#room_toys_attributes_0_name');
+    var borderDelay = 500;
+    var borderStyle = '4px solid';
+    var lightRed = '#F06868';
+    function redBorder() {
+      $nameField.css('border', borderStyle + lightRed);
+      window.setTimeout(function() { transparentBorder() }, borderDelay);
+    };
+    function transparentBorder() {
+      $nameField.css('border', borderStyle + ' transparent');
+      window.setTimeout(function() { redBorder() }, borderDelay);
+    };
+    redBorder();
+  })();
+});
