@@ -15,7 +15,7 @@
 //= require turbolinks
 //= require_tree .
 
-$(document).ready(function() {
+function ready(){
   (function nameBorder() {
     var $nameField = $('#room_toys_attributes_0_name');
     var borderDelay = 500;
@@ -38,4 +38,7 @@ $(document).ready(function() {
   $('#room_form li').mouseleave(function() {
     $(this).css("font-size", "100%");
   });
-});
+}
+
+$(document).on('page:load', ready);
+$(document).ready(ready);
