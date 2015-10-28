@@ -14,6 +14,9 @@
       %br
       = f.label :number
       = f.collection_select :number, (1..200).to_a, :to_s, :to_s
+      %br
+      = f.label :email
+      = f.email_field :email
       %ul
         = f.fields_for :toys do |toys_form|
           %li
