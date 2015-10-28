@@ -12,11 +12,11 @@
   %tbody
     - @toys.each do |toy|
       %tr
-        %td= toy.name
+        %td= link_to toy.name, toy
         %td= toy.color
         %td= toy.price
         %td= toy.available_num
-        %td= toy.room.name
+        %td= link_to toy.room.name, room_path(toy.room)
         %td= link_to 'Show', toy
         %td= link_to 'Edit', edit_toy_path(toy)
         %td= link_to 'Destroy', toy, method: :delete, data: { confirm: 'Are you sure?' }

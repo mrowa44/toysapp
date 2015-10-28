@@ -10,7 +10,7 @@
   %tbody
     - @rooms.each do |room|
       %tr
-        %td= room.name
+        %td= link_to room.name, room
         %td= room.number
         %td= room.number_of_toys
         %td= link_to 'Show', room
