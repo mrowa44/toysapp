@@ -1,4 +1,20 @@
 %p#notice= notice
+%h1= @room.name
+%table
+  %thead
+    %tr
+      %th Name
+      %th Color
+      %th Price
+      %th Available num
+  %tbody
+    - @toys.each do |toy|
+      %tr
+        %td= link_to toy.name, toy
+        %td= toy.color
+        %td= toy.price
+        %td= toy.available_num
+
 = link_to 'Edit', edit_room_path(@room)
 |
 = link_to 'Back', rooms_path
