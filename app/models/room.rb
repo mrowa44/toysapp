@@ -12,9 +12,14 @@ class Room < ActiveRecord::Base
   private
 
     def set_available_toys_num
-      self.toys.each do |toy|
-        self.number_of_toys += toy.available_num
-      end
+      sql = "SELECT SUM(a.toys_count)
+      FROM (SELECT SUM(available_num) AS toys_count
+      FROM toys
+      WHERE room_id = #{self.id}
+      GROUP BY toys.id)
+      a"
+      toys_count = ActiveRecord::Base.connection.execute(sql).values.flatten.first
+      self.number_of_toys = toys_count
       save
     end
 
