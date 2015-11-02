@@ -1,0 +1,21 @@
+%table#rooms_table
+  %thead
+    %tr
+      %th Name
+      %th Number
+      %th Num of toys
+      %th{:colspan => "4"}
+  %tbody
+    - @rooms.each do |room|
+      %tr
+        %td= link_to room.name, room
+        %td= room.number
+        %td= room.number_of_toys
+        - if room.open
+          %td= button_to 'Close room', toggle_open_room_path(room), method: :post, remote: true
+        - else
+          %td= button_to 'Open room', toggle_open_room_path(room), method: :post, remote: true
+
+        %td= link_to 'Show', room
+        %td= link_to 'Edit', edit_room_path(room)
+        %td= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' }

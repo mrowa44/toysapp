@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 20151102102516) do
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
     t.string   "email"
+    t.boolean  "open",           default: true
   end
 
   create_table "toys", force: :cascade do |t|

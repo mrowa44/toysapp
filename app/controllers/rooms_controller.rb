@@ -1,10 +1,10 @@
 class RoomsController < ApplicationController
-  before_action :set_room, only: [:show, :edit, :update, :destroy]
+  before_action :set_room, only: [:show, :edit, :update, :destroy, :toggle_open]
 
   # GET /rooms
   # GET /rooms.json
   def index
-    @rooms = Room.all
+    @rooms = Room.all.order(:name)
   end
 
   # GET /rooms/1
@@ -59,6 +59,14 @@ class RoomsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to rooms_url, notice: 'Room was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def toggle_open
+    @room.update(open: !@room.open)
+    @rooms = Room.all.order(:name)
+    respond_to do |format|
+      format.js {}
     end
   end
 
