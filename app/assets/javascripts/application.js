@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require jquery.validate.min
 //= require_tree .
 
 function ready(){
@@ -38,6 +39,8 @@ function ready(){
   $('#room_form li').mouseleave(function() {
     $(this).css("font-size", "100%");
   });
+
+  validateRoom();
 }
 
 $(document).on('page:load', ready);
