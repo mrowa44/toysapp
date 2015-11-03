@@ -1,5 +1,6 @@
 class RoomsController < ApplicationController
   before_action :set_room, only: [:show, :edit, :update, :destroy, :toggle_open]
+  rescue_from PG::CheckViolation, with: :pg_valid
 
   # GET /rooms
   # GET /rooms.json
@@ -80,5 +81,9 @@ class RoomsController < ApplicationController
     def room_params
       params[:room].permit(:name, :number, toys_attributes: [:id, :name, :color,
                                                             :price, :available_num, :image, :room_id])
+    end
+
+    def pg_valid
+      redirect_to root_path, notice: "Record could not be created"
     end
 end
