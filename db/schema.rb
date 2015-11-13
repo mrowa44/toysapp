@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151102102516) do
+ActiveRecord::Schema.define(version: 20151103121754) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,7 +46,12 @@ ActiveRecord::Schema.define(version: 20151102102516) do
     t.datetime "updated_at",                    null: false
     t.string   "email"
     t.boolean  "open",           default: true
+    t.integer  "floor_id"
+    t.integer  "door_id"
   end
+
+  add_index "rooms", ["door_id"], name: "index_rooms_on_door_id", using: :btree
+  add_index "rooms", ["floor_id"], name: "index_rooms_on_floor_id", using: :btree
 
   create_table "toys", force: :cascade do |t|
     t.string   "name"
@@ -63,5 +68,7 @@ ActiveRecord::Schema.define(version: 20151102102516) do
   add_index "toys", ["name"], name: "index_toys_on_name", using: :btree
   add_index "toys", ["room_id"], name: "index_toys_on_room_id", using: :btree
 
+  add_foreign_key "rooms", "doors"
+  add_foreign_key "rooms", "floors"
   add_foreign_key "toys", "rooms"
 end
